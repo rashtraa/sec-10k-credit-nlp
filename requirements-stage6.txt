@@ -1,0 +1,16 @@
+# Stage 6 — RAG. Almost nothing new.
+#
+# The extractive path needs NOTHING beyond stage 5: it reuses the same
+# embedder, the same FAISS index and the same BM25 index. That is deliberate —
+# an answering layer that needs a second stack is a second thing to debug.
+#
+# The generative path uses `flan-t5-base` (~250 MB), which `transformers`
+# already pinned in stage 5 can run. So this file exists only to say so.
+#
+#     pip install -r requirements-stage6.txt
+#
+# sentencepiece is the one genuine addition: the T5 tokenizer needs it, and
+# without it the model load fails with a message that does not mention
+# sentencepiece.
+
+sentencepiece==0.2.0

@@ -1,0 +1,10 @@
+# Stage 2 — section extraction and text features.
+# Install after stage 1, with the venv active.
+
+scikit-learn==1.5.2
+pysentiment2==0.1.1      # bundles the full Loughran-McDonald master dictionary
+matplotlib==3.9.2
+ipykernel==6.29.5        # Jupyter kernel for VS Code notebooks
+
+# --- stage 4 ---
+statsmodels==0.14.4

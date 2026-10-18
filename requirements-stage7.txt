@@ -1,0 +1,15 @@
+# Stage 7 — the HTTP service.
+#
+# fastapi + uvicorn are the service. httpx is used by BOTH the load test and
+# FastAPI's own TestClient, so it is not optional even if you never run the
+# load test.
+#
+#     pip install -r requirements-stage7.txt
+#
+# Nothing here touches the index, the model or the pipeline — stage 7 is a
+# transport layer over stages 5 and 6, which is the point. If the API needed
+# its own copy of the retrieval logic, that would be a design failure.
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+httpx==0.27.2

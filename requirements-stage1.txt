@@ -1,0 +1,14 @@
+# Stage 1 only — enough to download filings. Hard-pinned on purpose.
+#
+# Why pins: pandas 3.0 (released 2026) changed the default string dtype and
+# made copy-on-write mandatory, and numpy 2.5 breaks PySpark 3.5's Arrow
+# path. Both install happily and then fail three stages later in ways that
+# look like your bug rather than a version bug. Pin now, save Sunday.
+
+requests==2.32.3
+lxml==5.3.0
+lxml_html_clean==0.4.1
+pandas==2.2.3
+numpy==1.26.4
+pyarrow==17.0.0
+tqdm==4.66.5

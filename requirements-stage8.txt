@@ -1,0 +1,19 @@
+# Stage 8 — PySpark.
+#
+# READ THIS BEFORE INSTALLING: PySpark needs a JVM, and the version matters.
+#
+#   Spark 3.5 supports Java 8, 11 and 17. NOT 21.
+#
+# On Java 21 every pandas_udf dies inside Arrow with a hundred lines of JVM
+# stack trace whose top frame mentions `sun.misc.Unsafe` and never mentions
+# Java versions. Verified: identical code, 8 tests failing on Java 21 and 8
+# passing on Java 17. Anaconda ships 21 by default, so this is likely to be
+# you. `spark_features.py` checks the version at startup and prints a sentence
+# instead of the stack trace.
+#
+#   Get Temurin 17: https://adoptium.net/temurin/releases/?version=17
+#   Then per terminal:  $env:JAVA_HOME = "C:\Program Files\Eclipse Adoptium\jdk-17..."
+#
+#     pip install -r requirements-stage8.txt
+
+pyspark==3.5.3

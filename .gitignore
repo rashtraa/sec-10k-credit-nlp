@@ -1,0 +1,26 @@
+# Data is regenerable from EDGAR and is ~1 GB. Never commit it.
+data/
+.cache/
+.venv/
+venv/
+
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Local config. Holds machine-specific paths AND the SEC contact User-Agent,
+# which is personal data. See .env.example for the keys; activate.ps1 loads it.
+.env
+
+# stage 8: project-local JDK, ~300 MB of binaries
+.java/
+
+# Editor
+.vscode/
+
+# Personal CV drafts - not part of the project
+CV_*.md
+
+# Helper script, not part of the project
+push_to_github.bat

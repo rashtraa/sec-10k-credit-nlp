@@ -1,0 +1,37 @@
+# Stage 5 — semantic search and the retrieval benchmark.
+# Install after stages 1-2, with the venv active:
+#
+#     pip install -r requirements-stage5.txt
+#
+# WHAT EACH ONE IS FOR
+#
+# sentence-transformers   the embedding model wrapper. Pulls in `transformers`
+#                         and `torch`, which is the big download (~2.5 GB on
+#                         Windows CPU). Nothing else here is large.
+#
+# faiss-cpu               Facebook AI Similarity Search — the vector index.
+#                         `IndexFlatIP` does exact search, no approximation,
+#                         which at ~200k passages is fast enough and removes
+#                         a whole class of "is the index lossy?" questions.
+#
+# scipy                   the sparse matrix behind BM25. Nested Python dicts
+#                         needed several GB on this corpus; CSR needs ~200 MB.
+#
+# torch                   pinned to the CPU build. If you run on Kaggle you get
+#                         their CUDA build instead and it is ~10x faster.
+#
+# PINNED, for the same reason as every other stage: an unpinned install of
+# transformers or torch resolves to whatever shipped this month, and the
+# failure shows up as a shape error inside the model rather than as a version
+# problem.
+
+torch==2.4.1
+sentence-transformers==3.0.1
+transformers==4.44.2
+faiss-cpu==1.8.0.post1
+scipy==1.14.1
+pytest==8.3.3
+
+# Windows CPU note: if `pip install torch==2.4.1` is slow or fails, use
+#     pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+# which fetches the CPU-only wheel (~200 MB instead of ~2.5 GB).
